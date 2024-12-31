@@ -49,20 +49,20 @@ class _HomePageState extends State<HomePage> {
                             'Ciel',
                             gradient: LinearGradient(
                               colors: [
-                                Color(0xFFFF77A9),
-                                Color(0xFF7BDCF9),
+                                Color(0xFF42A5F5).withOpacity(0.8),
+                                Color(0xFF7BDCF9), // Light Cyan
                               ],
                               begin: Alignment.topLeft,
                               end: Alignment.bottomRight,
                             ),
                             style: GoogleFonts.audiowide(
-                                textStyle: TextStyle(
-                                    fontSize:
-                                        MediaQuery.sizeOf(context).height *
-                                            0.08,
-                                    fontWeight: FontWeight.bold,
-                                    color: Theme.of(context).primaryColor,
-                                    letterSpacing: 2)),
+                              textStyle: TextStyle(
+                                  fontSize:
+                                      MediaQuery.sizeOf(context).height * 0.08,
+                                  fontWeight: FontWeight.bold,
+                                  color: Theme.of(context).primaryColor,
+                                  letterSpacing: 2),
+                            ),
                           ),
                           GestureDetector(
                             onTap: () {
@@ -101,19 +101,50 @@ class _HomePageState extends State<HomePage> {
                     ),
                     Expanded(
                       child: ListView.builder(
-                        itemCount: messages.length,
-                        itemBuilder: (context, index) {
-                        return Padding(
-                          padding: EdgeInsets.all(10),
-                          child: Container(
-                            decoration: BoxDecoration(
-                              color: Colors.amber,
-                              borderRadius: BorderRadius.circular(15)
-                            ),
-                            child: Text(messages[index].parts.first.text),
-                          ),
-                        );
-                      }),
+                          itemCount: messages.length,
+                          itemBuilder: (context, index) {
+                            return SingleChildScrollView(
+                              child: Padding(
+                                padding: EdgeInsets.all(20),
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                      gradient: LinearGradient(
+                                        colors: [
+                                          Color(0xFFFF77A9).withOpacity(0.8),
+                                          Color(0xFF7BDCF9).withOpacity(0.7),
+                                        ],
+                                        begin: Alignment.topLeft,
+                                        end: Alignment.bottomRight,
+                                      ),
+                                      shape: BoxShape.rectangle,
+                                      boxShadow: [
+                                        BoxShadow(
+                                          color: Color(0xFF7BDCF9)
+                                              .withOpacity(0.6),
+                                          blurRadius: 15,
+                                          offset: Offset(0, 5),
+                                        ),
+                                      ],
+                                      borderRadius: BorderRadius.circular(15)),
+                                  child: Padding(
+                                    padding: EdgeInsets.all(15),
+                                    child: Text(
+                                      messages[index].parts.first.text,
+                                      style: GoogleFonts.roboto(
+                                        textStyle: TextStyle(
+                                            fontSize: MediaQuery.sizeOf(context)
+                                                    .height *
+                                                0.02,
+                                            fontWeight: FontWeight.bold,
+                                            color: Colors.white,
+                                            letterSpacing: 1),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            );
+                          }),
                     ),
                     Container(
                       padding:
@@ -122,8 +153,15 @@ class _HomePageState extends State<HomePage> {
                         children: [
                           Expanded(
                               child: TextField(
-                                controller: userInputController,
-                            style: TextStyle(color: Colors.black),
+                            controller: userInputController,
+                            style: GoogleFonts.roboto(
+                              textStyle: TextStyle(
+                                  fontSize:
+                                      MediaQuery.sizeOf(context).height * 0.02,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.black,
+                                  letterSpacing: 1),
+                            ),
                             decoration: InputDecoration(
                                 border: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(10)),
@@ -136,9 +174,12 @@ class _HomePageState extends State<HomePage> {
                           ),
                           GestureDetector(
                             onTap: () {
+                              FocusScope.of(context).unfocus();
                               if (userInputController.text.isNotEmpty) {
-                                chatbloc.add(OnUserMessageSendEvent(
-                                    userMessage: userInputController.text));
+                                String text = userInputController.text;
+                                userInputController.clear();
+                                chatbloc.add(
+                                    OnUserMessageSendEvent(userMessage: text));
                               }
                             },
                             child: Container(
