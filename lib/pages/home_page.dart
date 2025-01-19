@@ -1,5 +1,7 @@
 import 'package:ciel_ai/bloc/bloc_bloc.dart';
+import 'package:ciel_ai/img_generate_bloc/img_generator_bloc_bloc.dart';
 import 'package:ciel_ai/model/chat_message_model.dart';
+import 'package:ciel_ai/pages/image_generate_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -18,13 +20,16 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+       backgroundColor: Color(0xFF040E28),
       body: BlocConsumer<BlocBloc, BlocState>(
         bloc: chatbloc,
         listener: (context, state) {
-          // TODO: implement listener
+          
         },
         builder: (context, state) {
           switch (state.runtimeType) {
+            case ImgGeneratorLoadingState:
+              return  Center(child: Image.asset("assets/loading.jpg"));
             case SuccessState:
               List<ChatMessageModel> messages =
                   (state as SuccessState).bothmessages;
@@ -33,7 +38,7 @@ class _HomePageState extends State<HomePage> {
                 height: 812.h,
                 decoration: BoxDecoration(
                   image: DecorationImage(
-                      image: AssetImage("assets/ciel.png"),
+                      image: AssetImage("assets/flower.jpg"),
                       fit: BoxFit.cover,
                       opacity: 1),
                 ),
@@ -66,7 +71,11 @@ class _HomePageState extends State<HomePage> {
                           ),
                           GestureDetector(
                             onTap: () {
-                              // Define the action for the Image button
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                        const  ImageGeneratePage()));
                             },
                             child: Container(
                               width: 55.w,

@@ -1,11 +1,15 @@
-import 'package:ciel_ai/consts.dart';
+
 import 'package:ciel_ai/pages/home_page.dart';
+import 'package:ciel_ai/pages/image_generate_page.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_gemini/flutter_gemini.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-void main() {
-  Gemini.init(apiKey: Gemini_API_Key);
+Future<void>  main() async{
+  await dotenv.load(fileName: ".env");
+  Gemini.init(apiKey: dotenv.env['apiKey']??'');
+  
   runApp(const MyApp());
 }
 
@@ -14,6 +18,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    
     return SafeArea(
       child: ScreenUtilInit(
         designSize: Size(375, 812),
