@@ -15,14 +15,13 @@ class ImgGeneratorBlocBloc
     on<OnGenerateButtonClickedEvent>(onGenerateButtonClickedEvent);
     on<InitialEvent>(initialEvent);
   }
- 
 
   FutureOr<void> onGenerateButtonClickedEvent(
       OnGenerateButtonClickedEvent event,
       Emitter<ImgGeneratorBlocState> emit) async {
     try {
       emit(ImgGeneratorLoadingState());
-      await Future.delayed(Duration(seconds: 2));
+      await Future.delayed(const Duration(seconds: 2));
       Uint8List? bytes = await ImageRepo.generateImage(event.prompt);
       if (bytes != null) {
         emit(ImgGeneratorSuccessState(bytes));
@@ -34,7 +33,7 @@ class ImgGeneratorBlocBloc
     }
   }
 
-   FutureOr<void> initialEvent(
+  FutureOr<void> initialEvent(
       InitialEvent event, Emitter<ImgGeneratorBlocState> emit) async {
     try {
       Uint8List bytes = await rootBundle

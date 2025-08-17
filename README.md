@@ -1,16 +1,33 @@
-# ciel_ai
+# 🤖 AI Chatbot App
 
-A new Flutter project.
+A conversational AI mobile application built with **Flutter** and powered by the **Gemini API** for real-time intelligent responses.  
+The app also includes an **AI Image Generator** feature that allows users to create images from text prompts.  
 
-## Getting Started
+## 🚀 Features
+- **AI Chat** – Natural conversational experience powered by Gemini API  
+- **Image Generation** – Generate images from text prompts  
+- **Responsive UI** with clean design  
+- **State Management** using BLoC  
+- **API Integration** with Dio for efficient network handling  
 
-This project is a starting point for a Flutter application.
+## 📸 Screenshots
 
-A few resources to get you started if this is your first Flutter project:
+| Home | Image Generator | Generator Input | Result |
+|------|-----------------|-----------------|--------|
+| ![Home](assets/screenshots/home.png) | ![Image Generator](assets/screenshots/image_generator_1.png) | ![Image Generator Input](assets/screenshots/image_generator.png) | ![Result](assets/screenshots/result.png) |
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## 📱 App Flow
+1. **Home Screen** → Start chatting with the AI assistant.  
+2. **AI Chat** → Get real-time answers to queries.  
+3. **Image Generator** → Enter a text prompt.  
+4. **Result Screen** → View and save AI-generated images.  
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## 🛠️ Tech Stack
+- **Framework**: Flutter (Dart)  
+- **State Management**: BLoC  
+- **Networking**: Dio  
+- **AI Backend**: Gemini API  
+
+---
+
+📌 This project demonstrates my ability to integrate **AI services**, build scalable **state management** with BLoC, and create modern, user-friendly Flutter apps.

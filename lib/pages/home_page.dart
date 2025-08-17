@@ -20,23 +20,21 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-       backgroundColor: Color(0xFF040E28),
+      backgroundColor: const Color(0xFF040E28),
       body: BlocConsumer<BlocBloc, BlocState>(
         bloc: chatbloc,
-        listener: (context, state) {
-          
-        },
+        listener: (context, state) {},
         builder: (context, state) {
           switch (state.runtimeType) {
             case ImgGeneratorLoadingState:
-              return  Center(child: Image.asset("assets/loading.jpg"));
+              return Center(child: Image.asset("assets/loading.jpg"));
             case SuccessState:
               List<ChatMessageModel> messages =
                   (state as SuccessState).bothmessages;
               return Container(
                 width: 375.w,
                 height: 812.h,
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   image: DecorationImage(
                       image: AssetImage("assets/flower.jpg"),
                       fit: BoxFit.cover,
@@ -45,7 +43,7 @@ class _HomePageState extends State<HomePage> {
                 child: Column(
                   children: [
                     Container(
-                      padding: EdgeInsets.symmetric(horizontal: 10),
+                      padding: const EdgeInsets.symmetric(horizontal: 10),
                       height: 80,
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -54,8 +52,8 @@ class _HomePageState extends State<HomePage> {
                             'Ciel',
                             gradient: LinearGradient(
                               colors: [
-                                Color(0xFF42A5F5).withOpacity(0.8),
-                                Color(0xFF7BDCF9), // Light Cyan
+                                const Color(0xFF42A5F5).withOpacity(0.8),
+                                const Color(0xFF7BDCF9), // Light Cyan
                               ],
                               begin: Alignment.topLeft,
                               end: Alignment.bottomRight,
@@ -75,13 +73,13 @@ class _HomePageState extends State<HomePage> {
                                   context,
                                   MaterialPageRoute(
                                       builder: (context) =>
-                                        const  ImageGeneratePage()));
+                                          const ImageGeneratePage()));
                             },
                             child: Container(
                               width: 55.w,
                               height: 55.h,
                               decoration: BoxDecoration(
-                                gradient: LinearGradient(
+                                gradient: const LinearGradient(
                                   colors: [
                                     Color(0xFF7BDCF9), // Light Cyan
                                     Color(0xFF42A5F5), // Electric Blue
@@ -92,13 +90,14 @@ class _HomePageState extends State<HomePage> {
                                 shape: BoxShape.circle,
                                 boxShadow: [
                                   BoxShadow(
-                                    color: Color(0xFF7BDCF9).withOpacity(0.6),
+                                    color: const Color(0xFF7BDCF9)
+                                        .withOpacity(0.6),
                                     blurRadius: 15,
-                                    offset: Offset(0, 5),
+                                    offset: const Offset(0, 5),
                                   ),
                                 ],
                               ),
-                              child: Icon(
+                              child: const Icon(
                                 Icons.image_search,
                                 color: Colors.white,
                                 size: 30,
@@ -114,13 +113,15 @@ class _HomePageState extends State<HomePage> {
                           itemBuilder: (context, index) {
                             return SingleChildScrollView(
                               child: Padding(
-                                padding: EdgeInsets.all(20),
+                                padding: const EdgeInsets.all(20),
                                 child: Container(
                                   decoration: BoxDecoration(
                                       gradient: LinearGradient(
                                         colors: [
-                                          Color(0xFFFF77A9).withOpacity(0.8),
-                                          Color(0xFF7BDCF9).withOpacity(0.7),
+                                          const Color(0xFFFF77A9)
+                                              .withOpacity(0.8),
+                                          const Color(0xFF7BDCF9)
+                                              .withOpacity(0.7),
                                         ],
                                         begin: Alignment.topLeft,
                                         end: Alignment.bottomRight,
@@ -128,15 +129,15 @@ class _HomePageState extends State<HomePage> {
                                       shape: BoxShape.rectangle,
                                       boxShadow: [
                                         BoxShadow(
-                                          color: Color(0xFF7BDCF9)
+                                          color: const Color(0xFF7BDCF9)
                                               .withOpacity(0.6),
                                           blurRadius: 15,
-                                          offset: Offset(0, 5),
+                                          offset: const Offset(0, 5),
                                         ),
                                       ],
                                       borderRadius: BorderRadius.circular(15)),
                                   child: Padding(
-                                    padding: EdgeInsets.all(15),
+                                    padding: const EdgeInsets.all(15),
                                     child: Text(
                                       messages[index].parts.first.text,
                                       style: GoogleFonts.roboto(
@@ -156,8 +157,8 @@ class _HomePageState extends State<HomePage> {
                           }),
                     ),
                     Container(
-                      padding:
-                          EdgeInsets.symmetric(vertical: 35, horizontal: 17),
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 35, horizontal: 17),
                       child: Row(
                         children: [
                           Expanded(
@@ -178,7 +179,7 @@ class _HomePageState extends State<HomePage> {
                                     Theme.of(context).scaffoldBackgroundColor,
                                 filled: true),
                           )),
-                          SizedBox(
+                          const SizedBox(
                             width: 12,
                           ),
                           GestureDetector(
@@ -192,10 +193,10 @@ class _HomePageState extends State<HomePage> {
                               }
                             },
                             child: Container(
-                              padding: EdgeInsets.symmetric(
+                              padding: const EdgeInsets.symmetric(
                                   vertical: 16, horizontal: 16),
                               decoration: BoxDecoration(
-                                gradient: LinearGradient(
+                                gradient: const LinearGradient(
                                   colors: [
                                     Color(0xFF42A5F5), // Electric Blue
                                     Color(0xFF7BDCF9), // Light Cyan
@@ -206,13 +207,14 @@ class _HomePageState extends State<HomePage> {
                                 borderRadius: BorderRadius.circular(80),
                                 boxShadow: [
                                   BoxShadow(
-                                    color: Color(0xFF42A5F5).withOpacity(0.6),
+                                    color: const Color(0xFF42A5F5)
+                                        .withOpacity(0.6),
                                     blurRadius: 20,
-                                    offset: Offset(0, 5),
+                                    offset: const Offset(0, 5),
                                   ),
                                 ],
                               ),
-                              child: Row(
+                              child: const Row(
                                 mainAxisSize: MainAxisSize.min,
                                 children: [
                                   Icon(
@@ -230,7 +232,7 @@ class _HomePageState extends State<HomePage> {
                 ),
               );
             default:
-              return Center(
+              return const Center(
                 child: SizedBox(
                   child: Text("Some error occurred"),
                 ),
@@ -247,8 +249,9 @@ class GradientText extends StatelessWidget {
   final TextStyle style;
   final Gradient gradient;
 
-  GradientText(
+  const GradientText(
     this.text, {
+    super.key,
     required this.gradient,
     required this.style,
   });

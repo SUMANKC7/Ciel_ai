@@ -9,7 +9,7 @@ part 'bloc_event.dart';
 part 'bloc_state.dart';
 
 class BlocBloc extends Bloc<BlocEvent, BlocState> {
-  BlocBloc() : super(SuccessState(bothmessages: [])) {
+  BlocBloc() : super(SuccessState(bothmessages: const [])) {
     on<OnUserMessageSendEvent>(onUserMessageSendEvent);
   }
   List<ChatMessageModel> messages = [];
@@ -21,7 +21,7 @@ class BlocBloc extends Bloc<BlocEvent, BlocState> {
     );
     emit(SuccessState(bothmessages: messages));
     String generatedText = await CielRepo.chatTextGenerationRepo(messages);
-    if (generatedText.length > 0) {
+    if (generatedText.isNotEmpty) {
       messages.add(ChatMessageModel(
           role: "model", parts: [ChatPartModel(text: generatedText)]));
       emit(SuccessState(bothmessages: messages));

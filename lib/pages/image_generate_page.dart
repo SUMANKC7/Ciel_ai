@@ -23,28 +23,32 @@ class _ImageGeneratePageState extends State<ImageGeneratePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFF040E28),
+      backgroundColor: const Color(0xFF040E28),
       body: BlocConsumer<ImgGeneratorBlocBloc, ImgGeneratorBlocState>(
         bloc: imgGeneratorBlocBloc,
         listener: (BuildContext context, state) {},
         builder: (BuildContext context, state) {
           switch (state.runtimeType) {
             case (ImgGeneratorLoadingState):
-              return  Center(child: Container(
+              return Center(
+                  child: Container(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Image.asset("assets/loading.gif",height: MediaQuery.sizeOf(context).height*0.5,width: double.maxFinite,),
-                    Text("Generating Image", style: TextStyle(color: Colors.white,fontSize: 30),)
+                    Image.asset(
+                      "assets/loading.gif",
+                      height: MediaQuery.sizeOf(context).height * 0.5,
+                      width: double.maxFinite,
+                    ),
+                    const Text(
+                      "Generating Image",
+                      style: TextStyle(color: Colors.white, fontSize: 30),
+                    )
                   ],
                 ),
-              )
-                
-                
-              
-              );
+              ));
             case (ImgGeneratorFailedState):
-              return Center(
+              return const Center(
                 child: Text(
                   "Something went wrong",
                   style: TextStyle(color: Colors.white),
@@ -54,9 +58,10 @@ class _ImageGeneratePageState extends State<ImageGeneratePage> {
               final successState = state as ImgGeneratorSuccessState;
               return Container(
                 child: Column(
-                  
                   children: [
-                    SizedBox(height: 10,),
+                    const SizedBox(
+                      height: 10,
+                    ),
                     Padding(
                       padding: const EdgeInsets.only(left: 20),
                       child: Row(
@@ -65,7 +70,7 @@ class _ImageGeneratePageState extends State<ImageGeneratePage> {
                             onTap: () {
                               Navigator.pop(context);
                             },
-                            child: Icon(
+                            child: const Icon(
                               Icons.arrow_back,
                               color: Colors.white70,
                             ),
@@ -87,7 +92,7 @@ class _ImageGeneratePageState extends State<ImageGeneratePage> {
                     ),
                     Expanded(
                         child: Padding(
-                      padding: EdgeInsets.only(
+                      padding: const EdgeInsets.only(
                           left: 28, right: 28, top: 25, bottom: 25),
                       child: Container(
                         width: double.maxFinite,
@@ -100,29 +105,30 @@ class _ImageGeneratePageState extends State<ImageGeneratePage> {
                     )),
                     Container(
                       child: Padding(
-                        padding: EdgeInsets.all(15),
+                        padding: const EdgeInsets.all(15),
                         child: Column(
                           children: [
                             TextField(
-                              style: TextStyle(color: Colors.white),
+                              style: const TextStyle(color: Colors.white),
                               controller: textEditingController,
                               decoration: InputDecoration(
                                   enabledBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(
+                                    borderSide: const BorderSide(
                                       color: Colors.white60,
                                     ),
                                     borderRadius: BorderRadius.circular(15),
                                   ),
                                   focusedBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(
+                                    borderSide: const BorderSide(
                                       color: Colors.white60,
                                     ),
                                     borderRadius: BorderRadius.circular(15),
                                   ),
                                   hintText: "Enter your prompt",
-                                  hintStyle: TextStyle(color: Colors.white60)),
+                                  hintStyle:
+                                      const TextStyle(color: Colors.white60)),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 10,
                             ),
                             SizedBox(
@@ -141,13 +147,14 @@ class _ImageGeneratePageState extends State<ImageGeneratePage> {
                                     shape: RoundedRectangleBorder(
                                         borderRadius:
                                             BorderRadius.circular(15)),
-                                    backgroundColor: Color(0xFFDFCF3D),
-                                    side: BorderSide(color: Color(0xffDFCF3D))),
-                                icon: Icon(
+                                    backgroundColor: const Color(0xFFDFCF3D),
+                                    side: const BorderSide(
+                                        color: Color(0xffDFCF3D))),
+                                icon: const Icon(
                                   Icons.generating_tokens,
                                   color: Color(0xff4E4E4E),
                                 ),
-                                label: Text(
+                                label: const Text(
                                   'Generate',
                                   style: TextStyle(
                                     fontSize: 20,
@@ -157,7 +164,7 @@ class _ImageGeneratePageState extends State<ImageGeneratePage> {
                                 ),
                               ),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 5,
                             )
                           ],
@@ -168,7 +175,7 @@ class _ImageGeneratePageState extends State<ImageGeneratePage> {
                 ),
               );
             default:
-              return SizedBox();
+              return const SizedBox();
           }
         },
       ),

@@ -8,8 +8,7 @@ class ImageRepo {
     try {
       String url = "https://api.vyro.ai/v2/image/generations";
       Map<String, dynamic> headers = {
-        'Authorization':
-            'Bearer ${dotenv.env['imgapikey']}',
+        'Authorization': 'Bearer ${dotenv.env['imgapikey']}',
       };
 
       Map<String, dynamic> payload = {
@@ -37,5 +36,6 @@ class ImageRepo {
     } catch (e) {
       log(e.toString());
     }
+    return null;
   }
 }
