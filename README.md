@@ -14,7 +14,7 @@ The app also includes an **AI Image Generator** feature that allows users to cre
 
 | Home | Image Generator | Generator Input | Result |
 |------|-----------------|-----------------|--------|
-| ![Home](assets/screenshots/home.png) | ![Image Generator](assets/screenshots/image_generator_1.png) | ![Image Generator Input](assets/screenshots/image_generator.png) | ![Result](assets/screenshots/result.png) |
+| ![Home](assets/screenshots/home.png) |![Result](assets/screenshots/result.png)  | ![Image Generator Input] (assets/screenshots/image_generator_1.png) |![Image Generator Output](assets/screenshots/image_generator.png) |
 
 ## 📱 App Flow
 1. **Home Screen** → Start chatting with the AI assistant.  
