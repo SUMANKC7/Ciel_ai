@@ -1,5 +1,4 @@
 import 'package:ciel_ai/pages/home_page.dart';
-import 'package:ciel_ai/pages/image_generate_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_gemini/flutter_gemini.dart';
@@ -7,7 +6,14 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 Future<void> main() async {
   await dotenv.load(fileName: ".env");
-  Gemini.init(apiKey: dotenv.env['apiKey'] ?? '');
+
+  // Debug: Check if API key loaded
+  final apiKey = dotenv.env['GEMINI_API_KEY'];
+  assert(apiKey != null && apiKey.isNotEmpty, " API key not found in .env");
+
+  debugPrint("Gemini API key loaded: ${apiKey?.substring(0, 5)}*****");
+
+  Gemini.init(apiKey: apiKey ?? '');
 
   runApp(const MyApp());
 }
